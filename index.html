@@ -108,7 +108,10 @@
               <option value="duration">Thời lượng</option>
             </select>
           </div>
-          <button id="btnHeaderImport" class="btn-icon" title="Thêm nhạc từ máy">
+          <button id="btnHeaderImportFile" class="btn-icon" title="Chọn bài hát từ máy">
+            <i class="fa-solid fa-file-circle-plus"></i>
+          </button>
+          <button id="btnHeaderImportFolder" class="btn-icon" title="Chọn thư mục nhạc">
             <i class="fa-solid fa-folder-plus"></i>
           </button>
           <button id="btnToggleLayout" class="btn-icon" title="Đổi kiểu hiển thị">
@@ -140,10 +143,15 @@
         <div id="emptyState" class="empty-state">
           <i class="fa-solid fa-compact-disc"></i>
           <h3>Chưa có bài hát nào trong thư viện</h3>
-          <p>Hãy kéo thả file nhạc vào đây hoặc chọn nút bên dưới để thêm nhạc từ máy tính!</p>
-          <button id="btnImportFileEmpty" class="btn btn-primary">
-            <i class="fa-solid fa-folder-plus"></i> Thêm Nhạc Từ Máy Tính
-          </button>
+          <p>Hãy chọn nút bên dưới để chọn bài hát hoặc thư mục nhạc từ máy của bạn!</p>
+          <div style="display: flex; gap: 12px; margin-top: 12px; flex-wrap: wrap; justify-content: center;">
+            <button id="btnImportFileEmpty" class="btn btn-primary">
+              <i class="fa-solid fa-file-circle-plus"></i> Chọn Bài Hát
+            </button>
+            <button id="btnImportFolderEmpty" class="btn btn-secondary">
+              <i class="fa-solid fa-folder-plus"></i> Chọn Thư Mục Nhạc
+            </button>
+          </div>
         </div>
       </section>
 

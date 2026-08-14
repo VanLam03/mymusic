@@ -143,10 +143,12 @@ class SoundPulseApp {
     // Import File & Folder Buttons
     if (this.btnImportFiles) this.btnImportFiles.addEventListener('click', () => this.fileInput.click());
     if (this.btnImportFolder) this.btnImportFolder.addEventListener('click', () => this.folderInput.click());
-    const btnHeaderImport = document.getElementById('btnHeaderImport');
-    if (btnHeaderImport) {
-      btnHeaderImport.addEventListener('click', () => this.fileInput.click());
-    }
+
+    const btnHeaderImportFile = document.getElementById('btnHeaderImportFile');
+    if (btnHeaderImportFile) btnHeaderImportFile.addEventListener('click', () => this.fileInput.click());
+
+    const btnHeaderImportFolder = document.getElementById('btnHeaderImportFolder');
+    if (btnHeaderImportFolder) btnHeaderImportFolder.addEventListener('click', () => this.folderInput.click());
 
     this.fileInput.addEventListener('change', (e) => this.handleFileSelection(e.target.files));
     this.folderInput.addEventListener('change', (e) => this.handleFileSelection(e.target.files));
@@ -186,10 +188,14 @@ class SoundPulseApp {
       this.btnToggleLayout.addEventListener('click', () => this.toggleViewMode());
     }
 
-    // Empty State Import Button
+    // Empty State Import Buttons
     const btnImportFileEmpty = document.getElementById('btnImportFileEmpty');
     if (btnImportFileEmpty) {
       btnImportFileEmpty.addEventListener('click', () => this.fileInput.click());
+    }
+    const btnImportFolderEmpty = document.getElementById('btnImportFolderEmpty');
+    if (btnImportFolderEmpty) {
+      btnImportFolderEmpty.addEventListener('click', () => this.folderInput.click());
     }
 
     // Playback Controls
@@ -456,8 +462,10 @@ class SoundPulseApp {
         title: meta.title,
         artist: meta.artist,
         album: meta.album,
+        picture: meta.picture,
         format: meta.format,
-        addedAt: trackObj.addedAt
+        addedAt: trackObj.addedAt,
+        fileData: file
       });
     }
 
@@ -483,7 +491,20 @@ class SoundPulseApp {
 
   async loadTracksFromDB() {
     const stored = await StorageService.getAllTracks();
-    this.tracks = stored || [];
+    this.tracks = (stored || []).map(t => {
+      let trackUrl = t.url;
+      if (t.fileData) {
+        try {
+          trackUrl = URL.createObjectURL(t.fileData);
+        } catch (e) {
+          console.error("Error creating Object URL for track:", e);
+        }
+      }
+      return {
+        ...t,
+        url: trackUrl
+      };
+    });
     this.renderTracks();
     if (this.currentTrackIndex < 0 && this.tracks.length > 0) {
       this.playTrack(0);
