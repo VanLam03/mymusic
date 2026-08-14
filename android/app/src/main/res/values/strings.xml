@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">SoundPulse Music Player</string>
+    <string name="title_activity_main">SoundPulse Music Player</string>
+    <string name="package_name">com.soundpulse.localplayer</string>
+    <string name="custom_url_scheme">com.soundpulse.localplayer</string>
+</resources>

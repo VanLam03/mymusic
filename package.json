@@ -6,7 +6,8 @@
   "scripts": {
     "start": "electron .",
     "build:win": "electron-builder --win nsis",
-    "pack": "electron-builder --dir"
+    "pack": "electron-builder --dir",
+    "build:mobile": "node build-mobile.js && cap sync"
   },
   "keywords": [
     "music-player",
@@ -31,5 +32,10 @@
     "files": [
       "**/*"
     ]
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.5.0",
+    "@capacitor/cli": "^8.5.0",
+    "@capacitor/core": "^8.5.0"
   }
 }
