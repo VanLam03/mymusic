@@ -1351,9 +1351,14 @@ h1, h2, h3, h4 {
   }
 
   .app-container {
+    display: flex;
     flex-direction: column;
+    grid-template-columns: none;
+    grid-template-rows: none;
+    grid-template-areas: none;
     height: 100vh;
-    padding-bottom: calc(130px + env(safe-area-inset-bottom));
+    width: 100vw;
+    position: relative;
   }
 
   /* Transform Sidebar to Bottom Navigation Bar */
@@ -1363,21 +1368,22 @@ h1, h2, h3, h4 {
     left: 0;
     right: 0;
     top: auto;
-    width: 100%;
-    height: 62px;
-    background: rgba(10, 13, 20, 0.96);
-    backdrop-filter: blur(16px);
+    width: 100vw;
+    height: 60px;
+    background: rgba(10, 13, 20, 0.98);
+    backdrop-filter: blur(20px);
     border-right: none;
     border-top: 1px solid var(--border-glass);
-    flex-direction: row;
+    display: flex !important;
+    flex-direction: row !important;
     align-items: center;
     justify-content: space-around;
     padding: 0 4px;
     z-index: 1200;
   }
 
-  .sidebar-header,
-  .nav-section,
+  .sidebar .brand,
+  .sidebar .nav-section,
   .sidebar-import,
   .sidebar-footer {
     display: none !important;

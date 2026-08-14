@@ -141,8 +141,12 @@ class SoundPulseApp {
     if (this.btnQuickViz) this.btnQuickViz.addEventListener('click', () => this.switchTab('visualizer'));
 
     // Import File & Folder Buttons
-    this.btnImportFiles.addEventListener('click', () => this.fileInput.click());
-    this.btnImportFolder.addEventListener('click', () => this.folderInput.click());
+    if (this.btnImportFiles) this.btnImportFiles.addEventListener('click', () => this.fileInput.click());
+    if (this.btnImportFolder) this.btnImportFolder.addEventListener('click', () => this.folderInput.click());
+    const btnHeaderImport = document.getElementById('btnHeaderImport');
+    if (btnHeaderImport) {
+      btnHeaderImport.addEventListener('click', () => this.fileInput.click());
+    }
 
     this.fileInput.addEventListener('change', (e) => this.handleFileSelection(e.target.files));
     this.folderInput.addEventListener('change', (e) => this.handleFileSelection(e.target.files));
