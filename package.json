@@ -1,0 +1,35 @@
+{
+  "name": "soundpulse-local-music-player",
+  "version": "1.0.0",
+  "description": "Ứng dụng nghe nhạc local đa nền tảng với Equalizer, Audio Visualizer và Lời bài hát LRC",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build:win": "electron-builder --win nsis",
+    "pack": "electron-builder --dir"
+  },
+  "keywords": [
+    "music-player",
+    "audio-visualizer",
+    "equalizer",
+    "local-audio",
+    "electron",
+    "pwa"
+  ],
+  "author": "Antigravity",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^28.2.0",
+    "electron-builder": "^24.9.0"
+  },
+  "build": {
+    "appId": "com.soundpulse.localplayer",
+    "productName": "SoundPulse Music Player",
+    "win": {
+      "target": "nsis"
+    },
+    "files": [
+      "**/*"
+    ]
+  }
+}
